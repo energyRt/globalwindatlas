@@ -41,7 +41,7 @@ vignettes/*.pdf
 
 # temporary files
 /tmp
-docs
+#docs
 inst/doc
 
 # downloaded data files
