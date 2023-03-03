@@ -41,3 +41,10 @@ vignettes/*.pdf
 
 # temporary files
 /tmp
+docs
+inst/doc
+
+# downloaded data files
+data/gwa
+vignettes/data
+vignettes/tmp

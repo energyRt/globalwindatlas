@@ -6,3 +6,6 @@
 /tmp
 /data/gwa
 
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

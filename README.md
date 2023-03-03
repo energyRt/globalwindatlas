@@ -12,8 +12,10 @@ status](https://www.r-pkg.org/badges/version/globalwindatlas)](https://CRAN.R-pr
 
 <!-- badges: end -->
 
-The goal of globalwindatlas is to download high resolution GIS files
-(250m grid) from …
+The package assists downloading and processing high-resolution (250m
+grid) maps with averaged wind potential from [Global Wind
+Atlas](https://globalwindatlas.info). The data can be used for
+selections of locations for potential development of wind power plants.
 
 ## Installation
 

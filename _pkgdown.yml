@@ -1,0 +1,12 @@
+url: ~
+template:
+  bootstrap: 5
+  params:
+    ganalytics: G-HHTMRFHJ14
+
+toc:
+  depth: 5
+
+development:
+  mode: unreleased
+  version_label: info

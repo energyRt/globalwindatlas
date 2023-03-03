@@ -1,0 +1,24 @@
+---
+title: "Package development log and functions"
+author: '@olugovoy'
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(usethis)
+
+```
+
+```{r log, eval=FALSE}
+# usethis::use_pkgdown()
+# usethis::use_vignette("globalwindatlas")
+# usethis::use_vignette("")
+
+devtools::build_readme()
+devtools::install(build_vignettes = TRUE)
+pkgdown::build_site()
+
+```
+
