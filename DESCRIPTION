@@ -1,6 +1,6 @@
 Package: globalwindatlas
 Title: Access high-resolution (250m) wind potential data in GIS/tif from GlobalWindAtlas.info
-Version: 0.0.0.9000
+Version: 2023.05.05.900
 Authors@R: 
     person(given = "Oleg", 
           family = "Lugovoy", 
@@ -17,8 +17,8 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
-Imports: 
-    data.table,
-    httr,
-    terra
 VignetteBuilder: knitr
+Imports: 
+    httr,
+    sf,
+    terra

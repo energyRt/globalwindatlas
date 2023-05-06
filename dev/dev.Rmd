@@ -22,3 +22,13 @@ pkgdown::build_site()
 
 ```
 
+
+```{r eval=FALSE}
+usethis::use_package("sf")
+
+# functions to group locations by capacity factor
+usethis::use_r("group")
+
+```
+
+
