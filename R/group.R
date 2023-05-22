@@ -1,20 +1,20 @@
 
-#' Title
+#' (experimentsl) Group locations by intervals of values in given `tiff`-file and return geometries of the groups.
 #'
-#' @param gwa_tif
-#' @param gis_sf
-#' @param int
-#' @param eq
-#' @param simplify
-#' @param buffer
-#' @param drop_crumps
-#' @param verbose
+#' @param gwa_tif tiff-file (terra-object)
+#' @param gis_sf optional `sf` object (map) to crop `gwa-tif`
+#' @param int intervals of values
+#' @param eq relations to the interval
+#' @param simplify logical, if TRUE, geometries will be simplified.
+#' @param buffer logical, if TRUE, buffers will be added to the geometries.
+#' @param drop_crumps logical, if TRUE, small geometries will be dropped.
+#' @param verbose logical, should the process be reported.
 #'
-#' @return
+#' @return `sf` object with geometries for each group, defined by intervals.
 #' @export
 #'
 #' @examples
-group_locations <- function(gwa_tif, gis_sf = NULL,
+gwa_group_locations <- function(gwa_tif, gis_sf = NULL,
                             int = seq(0, 1, by = .2),
                             eq = "ge", # "le" , "within"
                             simplify = T,
@@ -41,6 +41,7 @@ group_locations <- function(gwa_tif, gis_sf = NULL,
 
   ll <- list()
   i <- 0
+  # browser()
   while (TRUE) {
 
     if (eq == ">=" || eq == "ge") {
@@ -74,7 +75,7 @@ group_locations <- function(gwa_tif, gis_sf = NULL,
       cat(" -> simplify")
       simpl_km <- units::set_units(.00001, "km")
       v6 <- terra::simplifyGeom(v5, simpl_km)
-      plot(v6, add = F, border = "navy", col = "grey")
+      terra::plot(v6, add = F, border = "navy", col = "grey")
 
       cat(" -> sf\n")
       sim_sf <- sf::st_as_sf(v6) %>% st_union()
