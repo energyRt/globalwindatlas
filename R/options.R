@@ -3,30 +3,20 @@
     source("~/.globalwindatlas")
   } else {
     warning("Global Wind Atlas data directory is not found.\n
-            Use '?set_gwa_dir' for help")
+            Use '?gwa_set_dir' for help")
   }
   # options(gwa.verbose = TRUE)
 }
 
-#' Title
+#' Set directory for/with GWA raster-files
+#'
+#' @param gwa.dir path to a directory where GWA files will downloaded and stored for further use.
 #'
 #' @return
 #' @export
 #'
 #' @examples
-get_gwa_dir <- function() {
-  getOption("gwa.dir")
-}
-
-#' Set directory for downloaded GWA files
-#'
-#' @param gwa.dir
-#'
-#' @return
-#' @export
-#'
-#' @examples
-set_gwa_dir <- function(gwa.dir) {
+gwa_set_dir <- function(gwa.dir) {
   if (!dir.exists(gwa.dir)) {
     dir.create(gwa.dir, recursive = T)
     message("Creating directory '", gwa.dir, "'")
@@ -37,4 +27,14 @@ set_gwa_dir <- function(gwa.dir) {
   writeLines(paste0("options(gwa.dir = '", gwa.dir, "')"), con)
   close(con)
 
+}
+
+#' Return current directory with/for downloaded GWA files
+#'
+#' @return
+#' @export
+#'
+#' @examples
+gwa_get_dir <- function() {
+  getOption("gwa.dir")
 }

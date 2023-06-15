@@ -32,7 +32,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">globalwindatlas</a>
 
-    <small class="nav-text text-info me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9000</small>
+    <small class="nav-text text-info me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">2023.05.22.900</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,103 +79,66 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("geodata")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">globalwindatlas</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/terra/" class="external-link">terra</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; terra 1.7.3</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; terra 1.7.29</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; Linking to GEOS 3.11.2, GDAL 3.6.2, PROJ 9.2.0; sf_use_s2() is TRUE</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="download-annual-averages">Download annual averages<a class="anchor" aria-label="anchor" href="#download-annual-averages"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## set directory for downloaded files, also will be used for quick files access</span></span>
-<span><span class="fu"><a href="../reference/set_gwa_dir.html">set_gwa_dir</a></span><span class="op">(</span><span class="st">"data/gwa"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/gwa_set_dir.html">gwa_set_dir</a></span><span class="op">(</span><span class="st">"data/gwa"</span><span class="op">)</span></span>
 <span><span class="co">## download wind capacity factors for wind-class #1</span></span>
-<span><span class="fu"><a href="../reference/get_wind_capacity_factor.html">get_wind_capacity_factor</a></span><span class="op">(</span><span class="st">"BGD"</span>, IEC <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/get_wind_capacity_factor.html">get_wind_capacity_factor</a></span><span class="op">(</span><span class="st">"BGD"</span>, IEC <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># wind-class #2</span></span>
-<span><span class="fu"><a href="../reference/get_wind_capacity_factor.html">get_wind_capacity_factor</a></span><span class="op">(</span><span class="st">"BGD"</span>, IEC <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># wind-class #3</span></span>
+<span><span class="co"># gwa_get_wind_cf("BGD", IEC = 1)</span></span>
+<span><span class="fu"><a href="../reference/gwa_get_wind_cf.html">gwa_get_wind_cf</a></span><span class="op">(</span><span class="st">"BGD"</span>, IEC <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># wind-class #2</span></span>
+<span><span class="co">#&gt; [1] "data/gwa/BGD_capacity_factor_IEC2.tif"</span></span>
+<span><span class="co"># gwa_get_wind_cf("BGD", IEC = 3) # wind-class #3</span></span>
 <span></span>
 <span><span class="co">## download wind speed data</span></span>
-<span><span class="fu"><a href="../reference/get_wind_speed.html">get_wind_speed</a></span><span class="op">(</span><span class="st">"BGD"</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
-<span><span class="co"># get_wind_speed("BGD", height = 150)</span></span>
-<span><span class="co"># get_wind_speed("BGD", height = 200)</span></span>
+<span><span class="fu"><a href="../reference/gwa_get_wind_speed.html">gwa_get_wind_speed</a></span><span class="op">(</span><span class="st">"BGD"</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "data/gwa/BGD_wind_speed_100.tif"</span></span>
+<span><span class="co"># gwa_get_wind_speed("BGD", height = 150)</span></span>
+<span><span class="co"># gwa_get_wind_speed("BGD", height = 200)</span></span>
 <span></span>
 <span><span class="co"># select data to plot</span></span>
-<span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_wind_capacity_factor.html">get_wind_capacity_factor</a></span><span class="op">(</span><span class="st">"BGD"</span>, IEC <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gwa_get_wind_cf.html">gwa_get_wind_cf</a></span><span class="op">(</span><span class="st">"BGD"</span>, IEC <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## plot </span></span>
 <span><span class="va">tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">tr</span>, main <span class="op">=</span> <span class="st">"Wind capacity factors"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">tr</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">tr</span>, main <span class="op">=</span> <span class="st">"Wind capacity factors"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">tr</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: [summary] used a sample</span></span>
+<span><span class="co">#&gt;  BGD_capacity_factor_IEC2</span></span>
+<span><span class="co">#&gt;  Min.   :0.01            </span></span>
+<span><span class="co">#&gt;  1st Qu.:0.15            </span></span>
+<span><span class="co">#&gt;  Median :0.19            </span></span>
+<span><span class="co">#&gt;  Mean   :0.20            </span></span>
+<span><span class="co">#&gt;  3rd Qu.:0.25            </span></span>
+<span><span class="co">#&gt;  Max.   :0.41            </span></span>
+<span><span class="co">#&gt;  NA's   :49764</span></span></code></pre></div>
+<!-- ## Filter locations with high wind potential -->
 </div>
 <div class="section level2">
-<h2 id="filter-locations-with-high-wind-potential">Filter locations with high wind potential<a class="anchor" aria-label="anchor" href="#filter-locations-with-high-wind-potential"></a>
+<h2 id="filter-and-group-locations-by-capacity-factor">Filter and group locations by capacity factor<a class="anchor" aria-label="anchor" href="#filter-and-group-locations-by-capacity-factor"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># select data</span></span>
-<span><span class="va">obj_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_wind_capacity_factor.html">get_wind_capacity_factor</a></span><span class="op">(</span><span class="st">"BGD"</span>, IEC <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">obj_tr</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "SpatRaster"</span></span>
-<span><span class="co">#&gt; attr(,"package")</span></span>
-<span><span class="co">#&gt; [1] "terra"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_tr</span><span class="op">)</span></span></code></pre></div>
-<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/cellSize.html" class="external-link">cellSize</a></span><span class="op">(</span><span class="va">obj_tr</span><span class="op">)</span></span>
-<span><span class="co">#&gt; class       : SpatRaster </span></span>
-<span><span class="co">#&gt; dimensions  : 3224, 1850, 1  (nrow, ncol, nlyr)</span></span>
-<span><span class="co">#&gt; resolution  : 0.0025, 0.0025  (x, y)</span></span>
-<span><span class="co">#&gt; extent      : 88.04407, 92.66907, 18.56577, 26.62577  (xmin, xmax, ymin, ymax)</span></span>
-<span><span class="co">#&gt; coord. ref. : lon/lat WGS 84 (EPSG:4326) </span></span>
-<span><span class="co">#&gt; source(s)   : memory</span></span>
-<span><span class="co">#&gt; name        :     area </span></span>
-<span><span class="co">#&gt; min value   : 68959.36 </span></span>
-<span><span class="co">#&gt; max value   : 72686.49</span></span>
-<span><span class="co"># units(obj_tr_hp)</span></span>
+<code class="sourceCode R"><span><span class="va">gwa_tif</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gwa_get_wind_cf.html">gwa_get_wind_cf</a></span><span class="op">(</span><span class="st">"BGD"</span>, IEC <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># wind-class #2</span></span>
 <span></span>
-<span><span class="va">gis_sv</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/geodata/man/gadm.html" class="external-link">gadm</a></span><span class="op">(</span><span class="st">"BGD"</span>, level <span class="op">=</span> <span class="fl">0</span>, path <span class="op">=</span> <span class="st">"tmp/"</span>, resolution <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">gis_sv</span><span class="op">)</span></span></code></pre></div>
-<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-3-2.png" width="700"></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">obj_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/crop.html" class="external-link">crop</a></span><span class="op">(</span><span class="va">obj_tr</span>, <span class="va">gis_sv</span><span class="op">)</span> <span class="co"># optional, crop the map</span></span>
-<span><span class="va">obj_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/mask.html" class="external-link">mask</a></span><span class="op">(</span><span class="va">obj_tr</span>, <span class="va">gis_sv</span><span class="op">)</span> <span class="co"># optional, select land only</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_tr</span><span class="op">)</span></span></code></pre></div>
-<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-3-3.png" width="700"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># keep locations with high potential (&gt;= 20% annual load)</span></span>
-<span><span class="va">obj_tr_hp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/app.html" class="external-link">app</a></span><span class="op">(</span><span class="va">obj_tr</span>, fun <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">.2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>; <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_tr_hp</span>, main <span class="op">=</span> <span class="st">"Locations with &gt;= 20% load"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-3-4.png" width="700"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># coerce raster data to vector-map</span></span>
-<span><span class="va">v3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/as.spatvector.html" class="external-link">as.polygons</a></span><span class="op">(</span><span class="va">obj_tr_hp</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">v3</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, main <span class="op">=</span> <span class="st">"Areas with &gt;= 20% load"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-3-5.png" width="700"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/isvalid.html" class="external-link">is.valid</a></span><span class="op">(</span><span class="va">v3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># fix errors</span></span>
-<span>  <span class="va">v3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/isvalid.html" class="external-link">makeValid</a></span><span class="op">(</span><span class="va">v3</span><span class="op">)</span></span>
-<span>  <span class="co"># is.valid(o)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="co"># coerce to sf-format</span></span>
-<span><span class="va">s3</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">v3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">s3</span><span class="op">$</span><span class="va">geometry</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, border <span class="op">=</span> <span class="st">"navy"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-3-6.png" width="700"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># simplify</span></span>
-<span><span class="va">buf_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span><span class="va">s3</span>, dist <span class="op">=</span> <span class="fl">.0</span><span class="op">)</span></span>
-<span><span class="co"># plot(buf_sf$geometry, col = "dodgerblue", border = "navy")</span></span>
-<span><span class="va">sim_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_simplify</a></span><span class="op">(</span><span class="va">buf_sf</span>, dTolerance <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="co"># size(sim_sf)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sim_sf</span><span class="op">$</span><span class="va">geometry</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, border <span class="op">=</span> <span class="st">"navy"</span>, axes <span class="op">=</span> <span class="cn">T</span>,</span>
-<span>     main <span class="op">=</span> <span class="st">"Areas for potential developement of wind power plants"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-3-7.png" width="700"></p>
+<span><span class="va">gwa_iec2_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gwa_group_locations.html">gwa_group_locations</a></span><span class="op">(</span><span class="va">gwa_tif</span>, </span>
+<span>                                   <span class="co"># gis_sf,</span></span>
+<span>                                   int <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">.05</span><span class="op">)</span>, </span>
+<span>                                   verbose <span class="op">=</span> <span class="cn">F</span>, plot_process <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">gwa_iec2_sf</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">eq</span><span class="op">)</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"H"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"CF"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="globalwindatlas_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

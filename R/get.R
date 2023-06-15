@@ -1,4 +1,4 @@
-#' Propose a name of file based on URL
+#' Propose a name for a downloaded file based on URL
 #'
 #' @param url API-url for download
 #' @param path optional path to a directory for saving the dounloaded file
@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-get_filename <- function(url, path = get_gwa_dir(), extension = ".tif") {
+gwa_get_filename <- function(url, path = gwa_get_dir(), extension = ".tif") {
   a <- strsplit(url, "/")[[1]]
   ii <- 1:length(a)
   n <- which(a == "country")[1]
@@ -22,7 +22,7 @@ get_filename <- function(url, path = get_gwa_dir(), extension = ".tif") {
   return(f)
 }
 
-#' Download wind capacity factors for a country
+#' Download wind capacity factors
 #'
 #' @param country isocode (three letters) of a country (case sensitive)
 #' @param IEC wind class (1, 2, or 3) according to The International Electrotechnical Commission (IEC)
@@ -34,13 +34,13 @@ get_filename <- function(url, path = get_gwa_dir(), extension = ".tif") {
 #' @export
 #'
 #' @examples
-get_wind_capacity_factor <- function(country, IEC = 2, path = get_gwa_dir(),
+gwa_get_wind_cf <- function(country, IEC = 2, path = gwa_get_dir(),
                                      filename = NULL, overwrite = FALSE) {
   if (country != "global") country <- paste0("country/", country)
   url <- paste0("https://globalwindatlas.info/api/gis/", country,
                 "/capacity-factor_IEC", IEC)
   if (is.null(filename)) {
-    f <- get_filename(url, path = path)
+    f <- gwa_get_filename(url, path = path)
   } else {
     f <- filename
   }
@@ -50,7 +50,7 @@ get_wind_capacity_factor <- function(country, IEC = 2, path = get_gwa_dir(),
   return(f)
 }
 
-#' Download wind speed data for a particular country
+#' Download wind speed data
 #'
 #' @param country 3-leter isocode of a country (case sensitive)
 #' @param height wind turbine hub height: 10, 50, 100, 150, or 200 meters
@@ -62,13 +62,13 @@ get_wind_capacity_factor <- function(country, IEC = 2, path = get_gwa_dir(),
 #' @export
 #'
 #' @examples
-get_wind_speed <- function(country, height = 100, path = get_gwa_dir(),
+gwa_get_wind_speed <- function(country, height = 100, path = gwa_get_dir(),
                                      filename = NULL, overwrite = FALSE) {
   if (country != "global") country <- paste0("country/", country)
   url <- paste0("https://globalwindatlas.info/api/gis/", country,
                 "/wind-speed/", height)
   if (is.null(filename)) {
-    f <- get_filename(url, path = path)
+    f <- gwa_get_filename(url, path = path)
   } else {
     f <- filename
   }

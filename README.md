@@ -36,15 +36,15 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(globalwindatlas)
 ## set directory for downloaded files, also will be used for quick files access
-set_gwa_dir("data/gwa")
+gwa_set_dir("data/gwa")
 ## download wind capacity factors for wind-class #1
-get_wind_capacity_factor("ISL", IEC = 1)
+gwa_get_wind_cf("ISL", IEC = 1)
 ## download wind speed data
-ISL <- get_wind_speed("ISL", height = 100) # Iceland
+ISL <- gwa_get_wind_speed("ISL", height = 100) # Iceland
 ISL
 
-MAR <- get_wind_speed("MAR", height = 100) # Morocco
-MAR <- get_wind_speed("MAR", height = 150) # Morocco
+MAR <- gwa_get_wind_speed("MAR", height = 100) # Morocco
+MAR <- gwa_get_wind_speed("MAR", height = 150) # Morocco
 
 ## plot data
 library(terra)
