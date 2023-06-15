@@ -34,7 +34,22 @@
     <loc>/reference/globalwindatlas-package.html</loc>
   </url>
   <url>
+    <loc>/reference/gwa_get_dir.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gwa_get_filename.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gwa_get_wind_cf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gwa_get_wind_speed.html</loc>
+  </url>
+  <url>
     <loc>/reference/gwa_group_locations.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gwa_set_dir.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>

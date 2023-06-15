@@ -26,7 +26,7 @@ gwa_group_locations(
 
 \item{ID}{character, identification column of the sf-object. If provided, geometries will be merged by IDs.}
 
-\item{int}{numeric, intervals of values}
+\item{int}{numeric, intervals of values for grouping locations}
 
 \item{simplify}{logical, if TRUE, geometries will be simplified.}
 

@@ -26,19 +26,19 @@ library(ggplot2)
 ## Download annual averages
 ```{r, eval=T}
 ## set directory for downloaded files, also will be used for quick files access
-set_gwa_dir("data/gwa")
+gwa_set_dir("data/gwa")
 ## download wind capacity factors for wind-class #1
-# get_wind_capacity_factor("BGD", IEC = 1)
-get_wind_capacity_factor("BGD", IEC = 2) # wind-class #2
-# get_wind_capacity_factor("BGD", IEC = 3) # wind-class #3
+# gwa_get_wind_cf("BGD", IEC = 1)
+gwa_get_wind_cf("BGD", IEC = 2) # wind-class #2
+# gwa_get_wind_cf("BGD", IEC = 3) # wind-class #3
 
 ## download wind speed data
-get_wind_speed("BGD", height = 100)
-# get_wind_speed("BGD", height = 150)
-# get_wind_speed("BGD", height = 200)
+gwa_get_wind_speed("BGD", height = 100)
+# gwa_get_wind_speed("BGD", height = 150)
+# gwa_get_wind_speed("BGD", height = 200)
 
 # select data to plot
-obj <- get_wind_capacity_factor("BGD", IEC = 2)
+obj <- gwa_get_wind_cf("BGD", IEC = 2)
 
 ## plot 
 tr <- rast(obj)
@@ -50,7 +50,7 @@ summary(tr)
 <!-- ## Filter locations with high wind potential -->
 ```{r, eval=F, include=FALSE}
 # select data
-obj_tr <- rast(get_wind_capacity_factor("BGD", IEC = 2))
+obj_tr <- rast(gwa_get_wind_cf("BGD", IEC = 2))
 class(obj_tr)
 plot(obj_tr)
 cellSize(obj_tr)
@@ -91,22 +91,15 @@ plot(sim_sf$geometry, col = "dodgerblue", border = "navy", axes = T,
 
 
 ## Filter and group locations by capacity factor
-```{r}
-gwa_tif <- get_wind_capacity_factor("BGD", IEC = 2) # wind-class #2
-
-## plot 
-# gwa_rast <- rast(gwa_tif)
-# plot(gwa_rast, main = "Wind capacity factors")
+```{r, warning=FALSE}
+gwa_tif <- gwa_get_wind_cf("BGD", IEC = 2) # wind-class #2
 
 gwa_iec2_sf <- gwa_group_locations(gwa_tif, 
                                    # gis_sf,
-                                   int = seq(0, 1, by = .1), 
-                                   # ID = "reg_off",
+                                   int = seq(0, 1, by = .05), 
                                    verbose = F, plot_process = F)
-# library(ggplot2)
 ggplot(gwa_iec2_sf) +
   geom_sf(aes(fill = eq), color = NA) +
-  # geom_sf(color = "grey", fill = NA, data = gis$voronoi$sf) +
   scale_fill_viridis_d(option = "H", direction = 1, name = "CF") +
   theme_bw()
 

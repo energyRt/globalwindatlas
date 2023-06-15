@@ -4,7 +4,7 @@
 #' @param gis_sf optional `sf` object (map) to crop `gwa-tif`
 #' @param by_feature logical, should the grouping be done for each geometry (row in sf-object), `TRUE` by default (recommended for large objects), if `FALSE` the geometries will be merged into one.
 #' @param ID character, identification column of the sf-object. If provided, geometries will be merged by IDs.
-#' @param int numeric, intervals of values
+#' @param int numeric, intervals of values for grouping locations
 #' @param simplify logical, if TRUE, geometries will be simplified.
 #' @param buffer logical, if TRUE, buffers will be added to the geometries.
 #' @param drop_crumps logical, if TRUE, small geometries will be dropped.

@@ -81,15 +81,15 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">globalwindatlas</span><span class="op">)</span></span>
 <span><span class="co">## set directory for downloaded files, also will be used for quick files access</span></span>
-<span><span class="fu"><a href="reference/set_gwa_dir.html">set_gwa_dir</a></span><span class="op">(</span><span class="st">"data/gwa"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/gwa_set_dir.html">gwa_set_dir</a></span><span class="op">(</span><span class="st">"data/gwa"</span><span class="op">)</span></span>
 <span><span class="co">## download wind capacity factors for wind-class #1</span></span>
-<span><span class="fu"><a href="reference/get_wind_capacity_factor.html">get_wind_capacity_factor</a></span><span class="op">(</span><span class="st">"ISL"</span>, IEC <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/gwa_get_wind_cf.html">gwa_get_wind_cf</a></span><span class="op">(</span><span class="st">"ISL"</span>, IEC <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## download wind speed data</span></span>
-<span><span class="va">ISL</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_wind_speed.html">get_wind_speed</a></span><span class="op">(</span><span class="st">"ISL"</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># Iceland</span></span>
+<span><span class="va">ISL</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gwa_get_wind_speed.html">gwa_get_wind_speed</a></span><span class="op">(</span><span class="st">"ISL"</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># Iceland</span></span>
 <span><span class="va">ISL</span></span>
 <span></span>
-<span><span class="va">MAR</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_wind_speed.html">get_wind_speed</a></span><span class="op">(</span><span class="st">"MAR"</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># Morocco</span></span>
-<span><span class="va">MAR</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_wind_speed.html">get_wind_speed</a></span><span class="op">(</span><span class="st">"MAR"</span>, height <span class="op">=</span> <span class="fl">150</span><span class="op">)</span> <span class="co"># Morocco</span></span>
+<span><span class="va">MAR</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gwa_get_wind_speed.html">gwa_get_wind_speed</a></span><span class="op">(</span><span class="st">"MAR"</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># Morocco</span></span>
+<span><span class="va">MAR</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gwa_get_wind_speed.html">gwa_get_wind_speed</a></span><span class="op">(</span><span class="st">"MAR"</span>, height <span class="op">=</span> <span class="fl">150</span><span class="op">)</span> <span class="co"># Morocco</span></span>
 <span></span>
 <span><span class="co">## plot data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>

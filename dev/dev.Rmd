@@ -33,4 +33,11 @@ usethis::use_r("group")
 
 ```
 
+## Log
+*2023-06-15* renamings:   
+get_gwa_dir -> gwa_get_dir
+set_gwa_dir -> gwa_set_dir
+get_filename -> gwa_get_filename
+get_wind_capacity_factor -> gwa_get_wind_cf
+get_wind_speed -> gwa_get_wind_speed
 
