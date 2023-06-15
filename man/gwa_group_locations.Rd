@@ -2,17 +2,19 @@
 % Please edit documentation in R/group.R
 \name{gwa_group_locations}
 \alias{gwa_group_locations}
-\title{(experimentsl) Group locations by intervals of values in given \code{tiff}-file and return geometries of the groups.}
+\title{Group locations by intervals of values in given \code{tiff}-file and return geometries of the groups.}
 \usage{
 gwa_group_locations(
   gwa_tif,
   gis_sf = NULL,
+  by_feature = TRUE,
+  ID = NULL,
   int = seq(0, 1, by = 0.2),
-  eq = "ge",
   simplify = T,
   buffer = T,
   drop_crumps = T,
-  verbose = T
+  verbose = T,
+  plot_process = T
 )
 }
 \arguments{
@@ -20,9 +22,11 @@ gwa_group_locations(
 
 \item{gis_sf}{optional \code{sf} object (map) to crop \code{gwa-tif}}
 
-\item{int}{intervals of values}
+\item{by_feature}{logical, should the grouping be done for each geometry (row in sf-object), \code{TRUE} by default (recommended for large objects), if \code{FALSE} the geometries will be merged into one.}
 
-\item{eq}{relations to the interval}
+\item{ID}{character, identification column of the sf-object. If provided, geometries will be merged by IDs.}
+
+\item{int}{numeric, intervals of values}
 
 \item{simplify}{logical, if TRUE, geometries will be simplified.}
 
@@ -31,10 +35,12 @@ gwa_group_locations(
 \item{drop_crumps}{logical, if TRUE, small geometries will be dropped.}
 
 \item{verbose}{logical, should the process be reported.}
+
+\item{plot_process}{logical, plot the process of creation of geometries.}
 }
 \value{
 \code{sf} object with geometries for each group, defined by intervals.
 }
 \description{
-(experimentsl) Group locations by intervals of values in given \code{tiff}-file and return geometries of the groups.
+Group locations by intervals of values in given \code{tiff}-file and return geometries of the groups.
 }

@@ -1,4 +1,4 @@
-#' Propose a name of file based on URL
+#' Propose a name for a downloaded file based on URL
 #'
 #' @param url API-url for download
 #' @param path optional path to a directory for saving the dounloaded file

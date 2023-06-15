@@ -25,6 +25,8 @@ pkgdown::build_site()
 
 ```{r eval=FALSE}
 usethis::use_package("sf")
+usethis::use_package("terra")
+usethis::use_package("dplyr")
 
 # functions to group locations by capacity factor
 usethis::use_r("group")
