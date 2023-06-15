@@ -17,6 +17,8 @@ grid) maps with averaged wind potential from [Global Wind
 Atlas](https://globalwindatlas.info). The data can be used for
 selections of locations for potential development of wind power plants.
 
+Documentation: <https://energyrt.github.io/globalwindatlas/index.html>
+
 ## Installation
 
 You can install the development version of globalwindatlas from
@@ -53,4 +55,6 @@ plot(rast(ISL))
 
 ## References
 
-<https://globalwindatlas.info/download/gis-files>
+<https://globalwindatlas.info/download/gis-files> (files to download)
+
+<https://energyrt.github.io/globalwindatlas/index.html> (documentation)

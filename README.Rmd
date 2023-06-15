@@ -21,7 +21,9 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-The package assists downloading and processing high-resolution (250m grid) maps with averaged wind potential from [Global Wind Atlas](https://globalwindatlas.info). The data can be used for selections of locations for potential development of wind power plants.  
+The package assists downloading and processing high-resolution (250m grid) maps with averaged wind potential from [Global Wind Atlas](https://globalwindatlas.info). The data can be used for selections of locations for potential development of wind power plants.
+
+Documentation: <https://energyrt.github.io/globalwindatlas/index.html>
 
 ## Installation
 
@@ -59,4 +61,6 @@ plot(rast(ISL))
 
 ## References
 
-<https://globalwindatlas.info/download/gis-files>
+<https://globalwindatlas.info/download/gis-files> (files to download)
+
+<https://energyrt.github.io/globalwindatlas/index.html> (documentation)
