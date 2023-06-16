@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/404.html</loc>
   </url>
   <url>
-    <loc>/articles/globalwindatlas.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/articles/globalwindatlas.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/articles/index.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/index.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/reference/get_filename.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/get_filename.html</loc>
   </url>
   <url>
-    <loc>/reference/get_gwa_dir.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/get_gwa_dir.html</loc>
   </url>
   <url>
-    <loc>/reference/get_wind_capacity_factor.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/get_wind_capacity_factor.html</loc>
   </url>
   <url>
-    <loc>/reference/get_wind_speed.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/get_wind_speed.html</loc>
   </url>
   <url>
-    <loc>/reference/globalwindatlas-package.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/globalwindatlas-package.html</loc>
   </url>
   <url>
-    <loc>/reference/gwa_get_dir.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/gwa_get_dir.html</loc>
   </url>
   <url>
-    <loc>/reference/gwa_get_filename.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/gwa_get_filename.html</loc>
   </url>
   <url>
-    <loc>/reference/gwa_get_wind_cf.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/gwa_get_wind_cf.html</loc>
   </url>
   <url>
-    <loc>/reference/gwa_get_wind_speed.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/gwa_get_wind_speed.html</loc>
   </url>
   <url>
-    <loc>/reference/gwa_group_locations.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/gwa_group_locations.html</loc>
   </url>
   <url>
-    <loc>/reference/gwa_set_dir.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/gwa_set_dir.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/set_gwa_dir.html</loc>
+    <loc>https://energyrt.github.io/globalwindatlas/reference/set_gwa_dir.html</loc>
   </url>
 </urlset>

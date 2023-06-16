@@ -1,4 +1,4 @@
-url: ~
+url: https://energyrt.github.io/globalwindatlas/
 template:
   bootstrap: 5
   # bootswatch: cerulean
@@ -11,3 +11,8 @@ toc:
 development:
   mode: unreleased
   version_label: info
+
+# navbar:
+  # structure:
+    # left:  [intro, reference, articles, tutorials, news]
+    # right: [search, github]
