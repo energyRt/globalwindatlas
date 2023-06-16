@@ -14,8 +14,9 @@ status](https://www.r-pkg.org/badges/version/globalwindatlas)](https://CRAN.R-pr
 
 The package assists downloading and processing high-resolution (250m
 grid) maps with averaged wind potential from [Global Wind
-Atlas](https://globalwindatlas.info). The data can be used for
-selections of locations for potential development of wind power plants.
+Atlas](https://globalwindatlas.info). The data might be useful in energy
+systems modeling for selections of locations with high wind energy
+potential.
 
 Documentation: <https://energyrt.github.io/globalwindatlas/index.html>
 
@@ -39,19 +40,27 @@ library(globalwindatlas)
 gwa_set_dir("data/gwa")
 ## download wind capacity factors for wind-class #1
 gwa_get_wind_cf("ISL", IEC = 1)
+#> [1] "data/gwa/ISL_capacity_factor_IEC1.tif"
 ## download wind speed data
-ISL <- gwa_get_wind_speed("ISL", height = 100) # Iceland
+ISL <- gwa_get_wind_cf("ISL", IEC = 2) # Iceland
 ISL
+#> [1] "data/gwa/ISL_capacity_factor_IEC2.tif"
 
-MAR <- gwa_get_wind_speed("MAR", height = 100) # Morocco
 MAR <- gwa_get_wind_speed("MAR", height = 150) # Morocco
 
 ## plot data
 library(terra)
-tr <- rast(MAR)
-plot(tr)
-plot(rast(ISL))
+#> terra 1.7.29
+plot(rast(MAR), main = "Morocco, wind speed at 150m height, m/s")
 ```
+
+<img src="man/figures/README-example-1.png" width="100%" />
+
+``` r
+plot(rast(ISL), main = "Iceland, wind capacity factors, class 2")
+```
+
+<img src="man/figures/README-example-2.png" width="100%" />
 
 ## References
 

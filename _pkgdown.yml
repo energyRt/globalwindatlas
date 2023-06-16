@@ -1,6 +1,7 @@
 url: ~
 template:
   bootstrap: 5
+  # bootswatch: cerulean
   params:
     ganalytics: G-HHTMRFHJ14
 

@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-The package assists downloading and processing high-resolution (250m grid) maps with averaged wind potential from [Global Wind Atlas](https://globalwindatlas.info). The data can be used for selections of locations for potential development of wind power plants.
+The package assists downloading and processing high-resolution (250m grid) maps with averaged wind potential from [Global Wind Atlas](https://globalwindatlas.info). The data might be useful in energy systems modeling for selections of locations with high wind energy potential.
 
 Documentation: <https://energyrt.github.io/globalwindatlas/index.html>
 
@@ -38,24 +38,22 @@ devtools::install_github("energyRt/globalwindatlas")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example, eval=FALSE}
+```{r example, eval=T, fig.retina=T, fig.width=7}
 library(globalwindatlas)
 ## set directory for downloaded files, also will be used for quick files access
 gwa_set_dir("data/gwa")
 ## download wind capacity factors for wind-class #1
 gwa_get_wind_cf("ISL", IEC = 1)
 ## download wind speed data
-ISL <- gwa_get_wind_speed("ISL", height = 100) # Iceland
+ISL <- gwa_get_wind_cf("ISL", IEC = 2) # Iceland
 ISL
 
-MAR <- gwa_get_wind_speed("MAR", height = 100) # Morocco
 MAR <- gwa_get_wind_speed("MAR", height = 150) # Morocco
 
 ## plot data
 library(terra)
-tr <- rast(MAR)
-plot(tr)
-plot(rast(ISL))
+plot(rast(MAR), main = "Morocco, wind speed at 150m height, m/s")
+plot(rast(ISL), main = "Iceland, wind capacity factors, class 2")
 
 ```
 

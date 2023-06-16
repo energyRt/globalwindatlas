@@ -32,7 +32,7 @@
     
     <a class="navbar-brand me-2" href="index.html">globalwindatlas</a>
 
-    <small class="nav-text text-info me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">2023.05.22.900</small>
+    <small class="nav-text text-info me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">2023.06.15.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,8 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>The package assists downloading and processing high-resolution (250m grid) maps with averaged wind potential from <a href="https://globalwindatlas.info" class="external-link">Global Wind Atlas</a>. The data can be used for selections of locations for potential development of wind power plants.</p>
+<p>The package assists downloading and processing high-resolution (250m grid) maps with averaged wind potential from <a href="https://globalwindatlas.info" class="external-link">Global Wind Atlas</a>. The data might be useful in energy systems modeling for selections of locations with high wind energy potential.</p>
+<p>Documentation: <a href="https://energyrt.github.io/globalwindatlas/index.html" class="external-link uri">https://energyrt.github.io/globalwindatlas/index.html</a></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -84,23 +85,28 @@
 <span><span class="fu"><a href="reference/gwa_set_dir.html">gwa_set_dir</a></span><span class="op">(</span><span class="st">"data/gwa"</span><span class="op">)</span></span>
 <span><span class="co">## download wind capacity factors for wind-class #1</span></span>
 <span><span class="fu"><a href="reference/gwa_get_wind_cf.html">gwa_get_wind_cf</a></span><span class="op">(</span><span class="st">"ISL"</span>, IEC <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "data/gwa/ISL_capacity_factor_IEC1.tif"</span></span>
 <span><span class="co">## download wind speed data</span></span>
-<span><span class="va">ISL</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gwa_get_wind_speed.html">gwa_get_wind_speed</a></span><span class="op">(</span><span class="st">"ISL"</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># Iceland</span></span>
+<span><span class="va">ISL</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gwa_get_wind_cf.html">gwa_get_wind_cf</a></span><span class="op">(</span><span class="st">"ISL"</span>, IEC <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># Iceland</span></span>
 <span><span class="va">ISL</span></span>
+<span><span class="co">#&gt; [1] "data/gwa/ISL_capacity_factor_IEC2.tif"</span></span>
 <span></span>
-<span><span class="va">MAR</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gwa_get_wind_speed.html">gwa_get_wind_speed</a></span><span class="op">(</span><span class="st">"MAR"</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># Morocco</span></span>
 <span><span class="va">MAR</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gwa_get_wind_speed.html">gwa_get_wind_speed</a></span><span class="op">(</span><span class="st">"MAR"</span>, height <span class="op">=</span> <span class="fl">150</span><span class="op">)</span> <span class="co"># Morocco</span></span>
 <span></span>
 <span><span class="co">## plot data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
-<span><span class="va">tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">MAR</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">tr</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">ISL</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; terra 1.7.29</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">MAR</span><span class="op">)</span>, main <span class="op">=</span> <span class="st">"Morocco, wind speed at 150m height, m/s"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-example-1.png" width="100%"></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">ISL</span><span class="op">)</span>, main <span class="op">=</span> <span class="st">"Iceland, wind capacity factors, class 2"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-example-2.png" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p><a href="https://globalwindatlas.info/download/gis-files" class="external-link uri">https://globalwindatlas.info/download/gis-files</a></p>
+<p><a href="https://globalwindatlas.info/download/gis-files" class="external-link uri">https://globalwindatlas.info/download/gis-files</a> (files to download)</p>
+<p><a href="https://energyrt.github.io/globalwindatlas/index.html" class="external-link uri">https://energyrt.github.io/globalwindatlas/index.html</a> (documentation)</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
