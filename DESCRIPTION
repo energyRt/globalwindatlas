@@ -23,3 +23,5 @@ Imports:
     httr,
     sf,
     terra
+URL: https://github.com/energyRt/globalwindatlas
+BugReports: https://github.com/energyRt/globalwindatlas/issues
