@@ -9,10 +9,11 @@ gwa_group_locations(
   gis_sf = NULL,
   by_feature = TRUE,
   ID = NULL,
-  int = seq(0, 1, by = 0.2),
-  simplify = T,
-  buffer = T,
-  drop_crumps = T,
+  int = seq(0, 1, by = 0.1),
+  aggregate_tif = 0,
+  simplify = 0.001,
+  buffer = 100,
+  drop_crumps = units::set_units(10, "km^2"),
   verbose = T,
   plot_process = T
 )
@@ -28,9 +29,9 @@ gwa_group_locations(
 
 \item{int}{numeric, intervals of values for grouping locations}
 
-\item{simplify}{logical, if TRUE, geometries will be simplified.}
+\item{simplify}{numeric, tolerance, the minimum distance between nodes in units of the crs (i.e. degrees for long/lat, see \code{?terra::simplifyGeom} for details). Default value is 0.1. To skip this step set the value to 0.}
 
-\item{buffer}{logical, if TRUE, buffers will be added to the geometries.}
+\item{buffer}{numeric. If positive, buffer will be added to every geometry.  Unit is meter if \code{gwa_tif} and \code{gis_sf} has a longitude/latitude CRS, or in the units of the coordinate reference system in other cases (typically also meter, see \code{?terra::buffer} for details). The default value is 100. Set to 0 to skip this step.}
 
 \item{drop_crumps}{logical, if TRUE, small geometries will be dropped.}
 

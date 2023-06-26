@@ -11,5 +11,6 @@
 #' @importFrom data.table .SD
 #' @importFrom data.table :=
 #' @importFrom data.table data.table
+#' @importFrom rlang is_empty
 ## usethis namespace: end
 NULL

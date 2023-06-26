@@ -18,8 +18,8 @@ library(usethis)
 
 devtools::build_readme()
 devtools::install(build_vignettes = TRUE)
-pkgdown::build_site()
 pkgdown::build_home()
+pkgdown::build_site()
 
 ```
 
@@ -28,6 +28,7 @@ pkgdown::build_home()
 usethis::use_package("sf")
 usethis::use_package("terra")
 usethis::use_package("dplyr")
+usethis::use_import_from("rlang", "is_empty")
 
 # functions to group locations by capacity factor
 usethis::use_r("group")

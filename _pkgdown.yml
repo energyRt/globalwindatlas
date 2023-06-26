@@ -1,7 +1,7 @@
 url: https://energyrt.github.io/globalwindatlas/
 template:
   bootstrap: 5
-  # bootswatch: cerulean
+  # bootswatch: Simplex
   params:
     ganalytics: G-HHTMRFHJ14
 

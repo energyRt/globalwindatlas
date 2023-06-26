@@ -8,6 +8,14 @@
 \description{
 What the package does (one paragraph).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/energyRt/globalwindatlas}
+  \item Report bugs at \url{https://github.com/energyRt/globalwindatlas/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Oleg Lugovoy \email{olugovoy@gmail.com} (\href{https://orcid.org/0000-0001-5546-9875}{ORCID})
 

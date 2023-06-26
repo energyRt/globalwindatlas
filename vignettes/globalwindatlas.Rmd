@@ -14,6 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Installation
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("energyRt/globalwindatlas")
+```
+
 ## Setup
 ```{r setup}
 # install.packages("geodata")
@@ -21,14 +27,15 @@ library(globalwindatlas)
 library(terra)
 library(sf)
 library(ggplot2)
+
+## set directory to store downloaded files
+gwa_set_dir("data/gwa")
 ```
 
 ## Download annual averages
 ```{r, eval=T}
-## set directory for downloaded files, also will be used for quick files access
-gwa_set_dir("data/gwa")
-## download wind capacity factors for wind-class #1
-# gwa_get_wind_cf("BGD", IEC = 1)
+## download wind capacity factors 
+# gwa_get_wind_cf("BGD", IEC = 1) # wind-class #1
 gwa_get_wind_cf("BGD", IEC = 2) # wind-class #2
 # gwa_get_wind_cf("BGD", IEC = 3) # wind-class #3
 
@@ -90,19 +97,21 @@ plot(sim_sf$geometry, col = "dodgerblue", border = "navy", axes = T,
 ```
 
 
-## Filter and group locations by capacity factor
-```{r, warning=FALSE}
+## Group locations by intervals of capacity factor
+```{r, warning=FALSE, include=FALSE}
 gwa_tif <- gwa_get_wind_cf("BGD", IEC = 2) # wind-class #2
 
 gwa_iec2_sf <- gwa_group_locations(gwa_tif, 
                                    # gis_sf,
                                    int = seq(0, 1, by = .05), 
-                                   verbose = F, plot_process = F)
+                                   verbose = T, plot_process = T)
+```
+
+```{r}
 ggplot(gwa_iec2_sf) +
   geom_sf(aes(fill = eq), color = NA) +
   scale_fill_viridis_d(option = "H", direction = 1, name = "CF") +
   theme_bw()
-
 
 ```
 
