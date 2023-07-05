@@ -10,6 +10,8 @@
 #' @param drop_crumps logical, if TRUE, small geometries will be dropped.
 #' @param verbose logical, should the process be reported.
 #' @param plot_process logical, plot the process of creation of geometries.
+#' @param aggregate_tif (optional) integer, number of pixels in `tiff` to aggregation towards x and y directions (see `fact` parameter in `terra::aggregate` for details). The default value is `0` (no aggregation).
+#' @param snap_to_grid (optional) numeric size of grid. If positive, geometries will be adjusted to the closest grid (see `grid_size` argument in `s2::s2_snap_to_grid`). The default value is `1e-5` in lon/lat coordinates.
 #'
 #' @return `sf` object with geometries for each group, defined by intervals.
 #'
@@ -28,6 +30,7 @@ gwa_group_locations <- function(
     # eq = ">=", # "<=" or "within"
     # keep_first_geom = T
     aggregate_tif = 0,
+    snap_to_grid = 1e-5,
     simplify = 0.001,
     buffer = 100,
     drop_crumps = units::set_units(10, "km^2"),
@@ -181,16 +184,20 @@ gwa_group_locations <- function(
         ttl <- paste0("region: ", reg, ", val ", im)
 
         # if (verbose) cat(" -> sf")
-        sim_sf <- sf::st_as_sf(obj_tr_i) %>% st_union() %>% st_make_valid()
-        # sim_sf <- sf::st_as_sf(v6) %>% st_union()
-        if ((inherits(sim_sf, "sfc_GEOMETRYCOLLECTION"))) {
-          sim_sf <- try({
-            st_collection_extract(sim_sf, "POLYGON", warn = F)
-          }, silent = T)
-          if (inherits(sim_sf, "try-error")) sim_sf <- st_polygon(list())
-        }
-        sim_sf <- sim_sf %>% st_make_valid() %>% st_union() %>%
+        sim_sf <- sf::st_as_sf(obj_tr_i) %>%
+          gwa_union_polygons(grid_size = snap_to_grid) %>%
           st_set_crs(st_crs(gis_sf)) %>% st_as_sf() %>% st_make_valid()
+          # st_union() %>% st_make_valid()
+        # if ((inherits(sim_sf, "sfc_GEOMETRYCOLLECTION"))) {
+        #   sim_sf <- try({
+        #     st_collection_extract(sim_sf, "POLYGON", warn = F)
+        #   }, silent = T)
+        #   if (inherits(sim_sf, "try-error")) sim_sf <- st_polygon(list())
+        # }
+        # sim_sf <- sim_sf %>%
+          # gwa_union_polygons()
+          # st_make_valid() %>% st_union() %>%
+          # st_set_crs(st_crs(gis_sf)) %>% st_as_sf() %>% st_make_valid()
 
          if (inherits(drop_crumps, "units") && as.numeric(drop_crumps) > 0
             && !first_geom && !is_empty(sim_sf)) {
@@ -200,7 +207,9 @@ gwa_group_locations <- function(
           })
         }
 
-        sim_sf <- sim_sf %>% st_union() %>% st_make_valid() %>% st_as_sf()
+        sim_sf <- sim_sf %>%
+          gwa_union_polygons(grid_size = snap_to_grid) %>% st_as_sf()
+          # st_union() %>% st_make_valid() %>% st_as_sf()
         # browser()
         if (is.null(sim_sf$geometry)) {
           try({sim_sf <- dplyr::rename(sim_sf, geometry = x)})
@@ -264,4 +273,26 @@ gwa_group_locations <- function(
     }
   }
   return(dd)
+}
+
+gwa_union_polygons <- function(x, grid_size = 1e-5) {
+  # workaround to improve stability of aggregation with `st_union()`
+  # x - geometry
+  # browser()
+  ii <- sapply(x, function(g) {
+    inherits(g, c("sfc_GEOMETRYCOLLECTION", "GEOMETRYCOLLECTION"))
+  })
+  if (any(ii)) {
+    x <- try({
+      suppressWarnings(
+        st_collection_extract(x, "POLYGON", warn = F)
+      )
+    }, silent = T)
+    if (inherits(x, "try-error")) x <- st_polygon(list())
+  }
+  if (grid_size > 0) x <- x %>% s2::s2_snap_to_grid(grid_size)
+  x %>%
+    st_as_sf() %>%
+    st_union(by_feature = F) %>%
+    st_make_valid()
 }

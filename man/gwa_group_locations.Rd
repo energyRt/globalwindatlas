@@ -11,6 +11,7 @@ gwa_group_locations(
   ID = NULL,
   int = seq(0, 1, by = 0.1),
   aggregate_tif = 0,
+  snap_to_grid = 1e-05,
   simplify = 0.001,
   buffer = 100,
   drop_crumps = units::set_units(10, "km^2"),
@@ -28,6 +29,10 @@ gwa_group_locations(
 \item{ID}{character, identification column of the sf-object. If provided, geometries will be merged by IDs.}
 
 \item{int}{numeric, intervals of values for grouping locations}
+
+\item{aggregate_tif}{(optional) integer, number of pixels in \code{tiff} to aggregation towards x and y directions (see \code{fact} parameter in \code{terra::aggregate} for details). The default value is \code{0} (no aggregation).}
+
+\item{snap_to_grid}{(optional) numeric size of grid. If positive, geometries will be adjusted to the closest grid (see \code{grid_size} argument in \code{s2::s2_snap_to_grid}). The default value is \code{1e-5} in lon/lat coordinates.}
 
 \item{simplify}{numeric, tolerance, the minimum distance between nodes in units of the crs (i.e. degrees for long/lat, see \code{?terra::simplifyGeom} for details). Default value is 0.1. To skip this step set the value to 0.}
 

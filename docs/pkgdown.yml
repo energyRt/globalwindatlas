@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   globalwindatlas: globalwindatlas.html
-last_built: 2023-06-26T02:10Z
+last_built: 2023-07-05T14:52Z
 urls:
   reference: https://energyrt.github.io/globalwindatlas/reference
   article: https://energyrt.github.io/globalwindatlas/articles

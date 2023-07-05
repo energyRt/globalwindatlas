@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">globalwindatlas</a>
 
-    <small class="nav-text text-info me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">2023.06.25.9000</small>
+    <small class="nav-text text-info me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">2023.07.05.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,6 +64,7 @@
 <span>  ID <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  int <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
 <span>  aggregate_tif <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  snap_to_grid <span class="op">=</span> <span class="fl">1e-05</span>,</span>
 <span>  simplify <span class="op">=</span> <span class="fl">0.001</span>,</span>
 <span>  buffer <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  drop_crumps <span class="op">=</span> <span class="fu">units</span><span class="fu">::</span><span class="fu"><a href="https://r-quantities.github.io/units/reference/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">"km^2"</span><span class="op">)</span>,</span>
@@ -92,6 +93,14 @@
 
 <dt>int</dt>
 <dd><p>numeric, intervals of values for grouping locations</p></dd>
+
+
+<dt>aggregate_tif</dt>
+<dd><p>(optional) integer, number of pixels in <code>tiff</code> to aggregation towards x and y directions (see <code>fact</code> parameter in <code><a href="https://rdrr.io/pkg/terra/man/aggregate.html" class="external-link">terra::aggregate</a></code> for details). The default value is <code>0</code> (no aggregation).</p></dd>
+
+
+<dt>snap_to_grid</dt>
+<dd><p>(optional) numeric size of grid. If positive, geometries will be adjusted to the closest grid (see <code>grid_size</code> argument in <code><a href="https://r-spatial.github.io/s2/reference/s2_boundary.html" class="external-link">s2::s2_snap_to_grid</a></code>). The default value is <code>1e-5</code> in lon/lat coordinates.</p></dd>
 
 
 <dt>simplify</dt>
